@@ -1,37 +1,25 @@
-
-const Joi=require('Joi');
-
-const validate=(data,forCreation=true)=>{
-    const presence=forCreation ? 'required' : 'optionnal';
-    return Joi.object({
-
-    }).validate(data,{abortEarly: false}).error;
-}
-
-const findAll=()=>{
-
-};
-
-const findOne=(id)=>{
-
-};
-
-const addOne=(data)=>{
-
-};
-
-const updateOne=(data, id)=>{
-
-};
-
-const deleteOne=(id)=>{
-
-};
-
-module.exports ={
-    findAll,
-    findOne,
-    addOne,
-    updateOne,
-    deleteOne
-}
+const mongoose = require('mongoose');
+const ideaSchema= new mongoose.Schema(
+    {
+        name :{
+            required : true,
+            type : String,
+            trim : true
+        },
+        createdDate:{
+            required :true,
+            type : Date
+        },
+        theme:{
+            type : [String],
+            required: true
+        }, 
+        state:{
+            required:true,
+            default: false,
+            type : Boolean
+        }
+    }
+)
+const ideas=mongoose.model('idea',ideaSchema);
+module.exports=ideas;

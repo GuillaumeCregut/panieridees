@@ -1,24 +1,16 @@
 const router = require('express').Router();
-const ideas = require('../models/ideas.model');
+const ideaController = require('../controllers/ideasController');
 
-router.get('/', async (req, res) => {
+router.get('/', ideaController.findAll);
 
-});
+router.get('/:id',ideaController.findOne);
 
-router.get('/:id', async (req, res) => {
+router.get('/bytheme/:id',ideaController.findOneByTheme);
 
-});
+router.post('/', ideaController.addIdea);
 
-router.post('/', async (req, res) => {
+router.put('/:id', ideaController.updateOne);
 
-});
-
-router.put('/:id', async (req, res) => {
-
-});
-
-router.delete('/:id', async (req, res) => {
-
-});
+router.delete('/:id',ideaController.deleteOne);
 
 module.exports = router;
