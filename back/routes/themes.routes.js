@@ -1,24 +1,14 @@
-const router = require('express').Router;
-const themes = require('../models/themes.model');
+const router = require('express').Router();
+const themesController = require('../controllers/themes.Controller');
 
-router.get('/', async (req, res) => {
+router.get('/', themesController.findAll);
 
-});
+router.get('/:id', themesController.findOne);
 
-router.get('/:id', async (req, res) => {
+router.post('/', themesController.addTheme);
 
-});
+router.put('/:id', themesController.updateOne);
 
-router.post('/', async (req, res) => {
-
-});
-
-router.put('/:id', async (req, res) => {
-
-});
-
-router.delete('/:id', async (req, res) => {
-
-});
+router.delete('/:id', themesController.deleteOne);
 
 module.exports = router;
