@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('corrs');
-const router = require('./routes/indexedDB.routes');
+const router = require('./routes/index.routes');
 const port=process.env.PORT || 8000;
 
 //need to create mongo connection
