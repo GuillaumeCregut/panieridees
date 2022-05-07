@@ -2,10 +2,10 @@ const themeModel = require('../models/themes.model');
 const ObjectID = require('mongoose').Types.ObjectId;
 
 const addTheme = async (req, res) => {
-    const { name } = req.body;
+    const { name,color } = req.body;
     const createdDate = new Date();
     try {
-        const theme = await themeModel.create({ name, createdDate });
+        const theme = await themeModel.create({ name, createdDate,color });
         res.status(201).json(theme)
     }
     catch (error) {
@@ -47,7 +47,8 @@ const updateOne =  async(req, res) => {
             {_id:id},
             {
               $set: {
-                  name: req.body.name
+                  name: req.body.name,
+                  color : req.body.color
               }  
             },
             {new:true,upsert:true,setDefaultsOnInsert:true}).select('-__v');

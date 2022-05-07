@@ -9,7 +9,11 @@ const themeSchema= new mongoose.Schema(
         createdDate:{
             required :true,
             type : Date
-        } 
+        }, 
+        color:{
+            required: true,
+            type : String
+        }
     }
 )
 const themes=mongoose.model('theme',themeSchema);
