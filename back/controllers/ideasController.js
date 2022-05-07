@@ -4,6 +4,9 @@ const ObjectID = require('mongoose').Types.ObjectId;
 
 const addIdea=async (req,res)=>{
     const { name,theme,state } = req.body;
+    if (!ObjectID.isValid(theme)) {
+        return res.status(404).send('Theme Id unknown');
+    }
     const createdDate = new Date();
     try {
         const idea = await ideaModel.create({ name, createdDate,theme,state });
@@ -40,7 +43,7 @@ const findOne = async (req, res) => {
 
 const updateOne =  async(req, res) => {
     const id = req.params.id;
-    if (!ObjectID.isValid(id)) {
+    if (!ObjectID.isValid(id) || !ObjectID.isValid(req.body.theme)) {
         return res.status(404).send('Id unknown');
     }
     try {
@@ -77,12 +80,16 @@ const deleteOne=async (req,res)=>{
     }
 }
 
-const findOneByTheme =async (req,res)=>{
+const findByTheme =async (req,res)=>{
     const id = req.params.id;
     if (!ObjectID.isValid(id)) {
         return res.status(404).send('Id unknown');
     }
-    return res.send('Find One By Theme');
+    const docs=await ideaModel.find({theme:id}).select('-__v');
+    if(docs===null){
+        return res.status(404).send('No result');
+    }
+    return res.status(200).json(docs);
 }
 
 module.exports={
@@ -91,5 +98,5 @@ module.exports={
     findAll,
     updateOne,
     deleteOne,
-    findOneByTheme
+    findByTheme
 }

@@ -11,7 +11,7 @@ const ideaSchema= new mongoose.Schema(
             type : Date
         },
         theme:{
-            type : [String],
+            type : String,
             required: true
         }, 
         state:{

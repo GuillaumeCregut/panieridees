@@ -5,7 +5,7 @@ router.get('/', ideaController.findAll);
 
 router.get('/:id',ideaController.findOne);
 
-router.get('/bytheme/:id',ideaController.findOneByTheme);
+router.get('/bytheme/:id',ideaController.findByTheme);
 
 router.post('/', ideaController.addIdea);
 
