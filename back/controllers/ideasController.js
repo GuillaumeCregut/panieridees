@@ -1,5 +1,6 @@
 const req = require('express/lib/request');
 const ideaModel=require('../models/ideas.model');
+const themeModel=require('../models/themes.model');
 const ObjectID = require('mongoose').Types.ObjectId;
 
 const addIdea=async (req,res)=>{
@@ -10,7 +11,7 @@ const addIdea=async (req,res)=>{
     const createdDate = new Date();
     try {
         const idea = await ideaModel.create({ name, createdDate,theme,state });
-        res.status(201).json(theme)
+        res.status(201).json(idea)
     }
     catch (error) {
         console.log(error);
@@ -19,8 +20,11 @@ const addIdea=async (req,res)=>{
 }
 
 const findAll = async (req, res) => {
-    const ideas = await ideaModel.find().select('-__v');
-    res.status(200).json(ideas);
+    const ideas = await ideaModel.find().populate('theme').select('-__v').sort({createdDate:1});
+    if(!ideas){
+        return res.status(404).send('Ideas not found');
+    }
+    return res.status(200).json(ideas);
 }
 
 const findOne = async (req, res) => {
@@ -29,7 +33,7 @@ const findOne = async (req, res) => {
         return res.status(404).send('Id unknown');
     }
     try{
-        let docs = await ideaModel.findById(id).select('-__v');
+        let docs = await ideaModel.findById(id).populate('theme').select('-__v');
         if(docs===null){
             docs=[];
         }
@@ -85,7 +89,7 @@ const findByTheme =async (req,res)=>{
     if (!ObjectID.isValid(id)) {
         return res.status(404).send('Id unknown');
     }
-    const docs=await ideaModel.find({theme:id}).select('-__v');
+    const docs=await ideaModel.find({theme:id}).populate('theme').select('-__v').sort({createdDate:1});
     if(docs===null){
         return res.status(404).send('No result');
     }

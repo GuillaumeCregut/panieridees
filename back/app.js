@@ -13,7 +13,6 @@ const corsOptions ={
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
   }
-console.log(`${process.env.CLIENT_URL}`);
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
