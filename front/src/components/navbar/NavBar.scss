@@ -1,10 +1,14 @@
 .NavBar{
-    width: 50%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    
-    // border: solid 1px black;
+   .NavBarContainer{
+        width: 50%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+    }
+
+    h1{
+        text-align: center;
+    }
 
     .NavBarLogo{
         width: 120px;

@@ -28,6 +28,7 @@ const PostIt = ({setSelectedTheme,selectedTheme, textIdea,setTextIdea}) => {
 
     return (
     <div className='PostIt'>
+        <h3>Notez votre idée</h3>
         <label htmlFor="themeSelect">Thématique souhaitée :
             <select id='themeSelect' value={selectedTheme} onChange={(e)=>setSelectedTheme(e.target.value)}>
             <option value=''>--</option>
@@ -38,10 +39,10 @@ const PostIt = ({setSelectedTheme,selectedTheme, textIdea,setTextIdea}) => {
                          key={theme._id}> {theme.name} </option>
                 )
             })}
-            </select>
+            </select><br />
         </label>
         <label htmlFor="ideaText">Votre sujet :
-            <textarea  id="ideaText" cols="30" rows="10" value={textIdea} onChange={(e)=>setTextIdea(e.target.value)}></textarea>
+            <textarea  className="ideaText" id="ideaText" cols="30" rows="5" value={textIdea} onChange={(e)=>setTextIdea(e.target.value)}></textarea>
         </label>
     </div>
   )

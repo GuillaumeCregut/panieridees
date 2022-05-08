@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Cart from '../../components/cart/Cart';
 import PostIt from '../../components/postit/PostIt';
 import bellSound from '../../assets/bell.ogg';
+import wrongSound from '../../assets/wrong.mp3';
 import './Home.scss';
 
 const Home = () => {
@@ -42,15 +43,18 @@ const Home = () => {
         .post(url,newIdea)
         .then((result)=>{
           if(result.status===201){
-            //animate, then restore,play sound
+            animatePostIt();
           
           }
         })
         .catch((err)=>{
           if(err.code==='ERR_NETWORK'){
-           // alert(`L'API est hébergée par Heroku, il faut attendre 15 sec pour son démarrage. Veuillez réessayer dans 15 sec.`)
+            alert(`L'API est hébergée par Heroku, il faut attendre 15 sec pour son démarrage. Veuillez réessayer dans 15 sec.`)
           }
-          animatePostIt();
+          else{
+            playWrong();
+            reattribute();  
+          }
         })
     }
   }
@@ -66,7 +70,10 @@ const Home = () => {
     let audio = new Audio(bellSound);
     audio.play();
   }
-
+  const playWrong=()=>{
+    let audio = new Audio(wrongSound);
+    audio.play();
+  }
 //Animation
   const animatePostIt=()=>{
     const postItContainer=document.getElementById('HomePostItContainer');
@@ -86,6 +93,7 @@ const Home = () => {
 
     const postItAnim=new Animation(translatePostIt,document.timeline);
     postItAnim.play();
+    
     Promise.all(
       postItContainer
         .getAnimations().map(
