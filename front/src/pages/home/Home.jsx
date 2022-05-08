@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Cart from '../../components/cart/Cart';
 import PostIt from '../../components/postit/PostIt';
 import bellSound from '../../assets/bell.ogg';
@@ -11,7 +10,6 @@ const Home = () => {
   const [selectedTheme, setSelectedTheme] = useState('');
   const [textIdea, setTextIdea] = useState('');
   const [refresh, setRefresh] = useState(false);
-  let navigate=useNavigate();
   let idPostIt = 0;
 
   //draggable events
@@ -118,10 +116,6 @@ const Home = () => {
     );
   }
 
-  const handleCartClick=()=>{
-    navigate('/panier');
-  }
-
   return (
     <div className='Home'>
       <h2>Accueil</h2>
@@ -151,7 +145,7 @@ const Home = () => {
           <div className="HiddenButton">
               <button onClick={addIdea}>Ajouter l'idée</button>
             </div>
-          <div className="cartContainer" onClick={handleCartClick}>
+          <div className="cartContainer">
             <Cart refresh={refresh} />
           </div>
         </div>
