@@ -21,7 +21,6 @@ const Cart = ({refresh}) => {
     }
     getUnprocessed();
   },[refresh]);
-  console.log(ideas.length);
 
   return (
     <div className='Cart'>
