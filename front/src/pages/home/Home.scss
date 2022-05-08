@@ -42,7 +42,7 @@
     .HiddenButton{
         display: none;
     }
-    
+
     @media screen and (max-width: 1024px) {
         .HomeContainer{
             display: flex;
@@ -66,6 +66,10 @@
             display: block;
             width: 30%;
             margin: 30px auto;
+        }
+
+        .HiddenButton button{
+            width: 100%;
         }
     }
 }
