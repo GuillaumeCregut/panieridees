@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import Cart from '../../components/cart/Cart';
 import PostIt from '../../components/postit/PostIt';
 import bellSound from '../../assets/bell.ogg';
