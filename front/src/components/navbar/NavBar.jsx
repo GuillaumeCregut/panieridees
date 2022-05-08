@@ -10,7 +10,7 @@ const NavBar = () => {
         <img src={logo} className='NavBarLogo' alt="logo" />
         <ul className='NavBarMenu'>
           <li className='NavBarMenuItem'><NavLink to='/' className={({isActive})=>isActive?'NavBarLink activeLink':'NavBarLink'}>Accueil</NavLink></li>
-          <li className='NavBarMenuItem'><NavLink to='/panier' className={({isActive})=>isActive?'NavBarLink activeLink':'NavBarLink'}>Panier</NavLink></li>
+          <li className='NavBarMenuItem'><NavLink to='/panier' className={({isActive})=>isActive?'NavBarLink activeLink':'NavBarLink'}>Boite</NavLink></li>
           <li className='NavBarMenuItem'><NavLink to='/parametres' className={({isActive})=>isActive?'NavBarLink activeLink':'NavBarLink'}>Paramètres</NavLink></li>
         </ul>
       </div>
