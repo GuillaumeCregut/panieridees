@@ -30,6 +30,7 @@ const Home = () => {
     let data=ev.dataTransfer.getData("text");
     let targetDiv=ev.target.id;
     if((targetDiv==='homeRepo')&&(idPostIt==='HomePostItContainer') ){
+      ev.target.innerHTML='';
       ev.target.appendChild(document.getElementById(data));
       const newIdea={
         state : false,
@@ -42,7 +43,7 @@ const Home = () => {
         .then((result)=>{
           if(result.status===201){
             //animate, then restore,play sound
-            playSound();
+          
           }
         })
         .catch((err)=>{
@@ -57,6 +58,8 @@ const Home = () => {
   const reattribute=()=>{
     const leftPanel=document.getElementById('HomeLeft');
     leftPanel.appendChild(document.getElementById('HomePostItContainer'));
+    const Repo=document.getElementById('homeRepo');
+    Repo.innerHTML='Déposer votre idée ici';
   }
 
   const playSound=()=>{
@@ -72,7 +75,7 @@ const Home = () => {
       [
         {transform: 'translateY(0%) scale(1)'
       },
-        {transform : 'translateY(200px) scale(0)'
+        {transform : 'translateY(350px) scale(0)'
       }
       ],
       {
@@ -80,6 +83,7 @@ const Home = () => {
         iterations:1
       }
     );
+
     const postItAnim=new Animation(translatePostIt,document.timeline);
     postItAnim.play();
     Promise.all(
@@ -90,6 +94,7 @@ const Home = () => {
           }
         )
         ).then(()=>{
+          playSound();
           reattribute();
         }
     );
@@ -121,8 +126,9 @@ const Home = () => {
             onDragOver={(e)=>allowDrop(e)}>
             Déposer votre idée ici
           </div>
+          <div className="cartContainer">
           <Cart />
-          <button onClick={reattribute}>Go</button>
+          </div>
         </div>
       </div>
     </div>
