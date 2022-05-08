@@ -1,22 +1,22 @@
-.NavBar{
-   .NavBarContainer{
+.NavBar {
+    .NavBarContainer {
         width: 50%;
         margin: 0 auto;
         display: flex;
         flex-direction: row;
     }
 
-    h1{
+    h1 {
         text-align: center;
     }
 
-    .NavBarLogo{
+    .NavBarLogo {
         width: 120px;
-        height : auto;
+        height: auto;
         vertical-align: baseline;
     }
 
-    .NavBarMenu{
+    .NavBarMenu {
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -25,32 +25,48 @@
         width: 50%;
         margin: 20px auto;
         // border: solid 1px black;
-        
+
     }
 
-    .NavBarMenuItem{
-        margin : 0 20px;
-        
+    .NavBarMenuItem {
+        margin: 0 20px;
+
     }
 
-    .NavBarLink{
+    .NavBarLink {
         text-decoration: none;
         font-family: var(--Menu-Font-Name);
         font-size: var(--Menu-Font-Size);
     }
+
+    .activeLink {
+        color: red;
+        position: relative;
+    }
+
+    .activeLink::after {
+        content: '';
+        width: 100%;
+        position: absolute;
+        bottom : -10px;
+        left : 0;
+        height : 5px;
+        background-color: red;
+    }
+
     @media screen and (max-width: 1024px) {
-        .NavBarContainer{
+        .NavBarContainer {
             width: 100%;
             flex-direction: column;
         }
 
-        .NavBarLogo{
+        .NavBarLogo {
             width: 90px;
-            height : auto;
+            height: auto;
             margin: 0 auto;
         }
 
-        .NavBarLink{
+        .NavBarLink {
             font-family: var(--Menu-Font-Name);
             font-size: 1rem;
         }
