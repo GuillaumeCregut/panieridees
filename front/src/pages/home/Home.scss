@@ -38,4 +38,34 @@
         justify-content: center;
         margin-top: 50px;
     }
+
+    .HiddenButton{
+        display: none;
+    }
+    
+    @media screen and (max-width: 1024px) {
+        .HomeContainer{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .HomeLeft{
+            width: 100%;
+        }
+
+        .HomeRight{
+            width: 100%;
+        }
+
+        .HomeRepo{
+            display: none;
+        }
+        
+        .HiddenButton{
+            display: block;
+            width: 30%;
+            margin: 30px auto;
+        }
+    }
 }

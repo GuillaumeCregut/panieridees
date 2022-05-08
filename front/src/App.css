@@ -27,3 +27,6 @@ h2{
   font-family: var(--Title-Font-Name);
   font-size: var(--Title-Font-Size);
 }
+#root{
+  width: 100%;
+}
