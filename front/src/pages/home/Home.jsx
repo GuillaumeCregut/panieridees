@@ -45,6 +45,8 @@ const Home = () => {
         .then((result)=>{
           if(result.status===201){
             animatePostIt();
+            setTextIdea('');
+            setSelectedTheme(0);
             setRefresh(!refresh);
           }
         })
