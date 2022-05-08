@@ -9,6 +9,7 @@ import './Home.scss';
 const Home = () => {
   const [selectedTheme, setSelectedTheme] = useState('');
   const [textIdea, setTextIdea] = useState('');
+  const [refresh,setRefresh]=useState(false);
   let idPostIt=0;
 
   //draggable events
@@ -44,12 +45,13 @@ const Home = () => {
         .then((result)=>{
           if(result.status===201){
             animatePostIt();
-          
+            setRefresh(!refresh);
           }
         })
         .catch((err)=>{
           if(err.code==='ERR_NETWORK'){
-            alert(`L'API est hébergée par Heroku, il faut attendre 15 sec pour son démarrage. Veuillez réessayer dans 15 sec.`)
+            alert(`L'API est hébergée par Heroku, il faut attendre 15 sec pour son démarrage. Veuillez réessayer dans 15 sec.`);
+            reattribute();
           }
           else{
             playWrong();
@@ -135,7 +137,7 @@ const Home = () => {
             Déposer votre idée ici
           </div>
           <div className="cartContainer">
-          <Cart />
+          <Cart refresh={refresh}/>
           </div>
         </div>
       </div>

@@ -47,7 +47,6 @@ const findOne = async (req, res) => {
 
 const findAllInCart=async(req,res)=>{
     const ideas = await ideaModel.find({state:false}).populate('theme').select('-__v').sort({createdDate:1});
-    console.log(ideas);
     if(!ideas){
         return res.status(404).send('Ideas not found');
     }
