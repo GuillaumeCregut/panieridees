@@ -1,14 +1,21 @@
 .PostIt{
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: auto;
+    padding: 10px;
     box-shadow: 10px 10px 5px 0px rgba(153,149,136,0.75);
     -webkit-box-shadow: 10px 10px 5px 0px rgba(153,149,136,0.75);
     -moz-box-shadow: 10px 10px 5px 0px rgba(153,149,136,0.75);
     background-color: yellow;
+    font-family: cursive;
 
-    .HomePostIt{
-        width: 100%;
-        height: auto;
-       
-    }
+   .ideaText{
+       width: 100%;
+       margin: 10px auto;
+       background-color: yellow;
+       border-color: rgba(0A,0A,0A,0.2);
+       resize: none;
+       font-family: inherit;
+       font-size: inherit;
+      
+   }
 }

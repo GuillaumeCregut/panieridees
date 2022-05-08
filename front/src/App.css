@@ -10,12 +10,14 @@
   --Menu-Font-Size : 2rem;
   --Title-Font-Name : sans-serif;
   --Title-Font-Size : 3rem;
+  --Font-TextArea-Idea : sans-serif;
 }
 
 body {
   background-image: url("./assets/gradient.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  font-size: 1.1rem;
 }
 
 h2{
