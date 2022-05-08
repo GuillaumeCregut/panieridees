@@ -38,4 +38,21 @@
         font-family: var(--Menu-Font-Name);
         font-size: var(--Menu-Font-Size);
     }
+    @media screen and (max-width: 1024px) {
+        .NavBarContainer{
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .NavBarLogo{
+            width: 90px;
+            height : auto;
+            margin: 0 auto;
+        }
+
+        .NavBarLink{
+            font-family: var(--Menu-Font-Name);
+            font-size: 1rem;
+        }
+    }
 }
