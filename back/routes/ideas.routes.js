@@ -3,6 +3,8 @@ const ideaController = require('../controllers/ideasController');
 
 router.get('/', ideaController.findAll);
 
+router.get('/notprocessed',ideaController.findAllInCart);
+
 router.get('/:id',ideaController.findOne);
 
 router.get('/bytheme/:id',ideaController.findByTheme);
