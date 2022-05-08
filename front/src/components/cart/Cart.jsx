@@ -5,6 +5,7 @@ import './Cart.scss';
 
 const Cart = ({refresh}) => {
   const [ideas,setIdeas]=useState([]);
+  
   useEffect(()=>{
     const getUnprocessed=async()=>{
       const url=`${process.env.REACT_APP_API_URL}ideas/notprocessed/`;
