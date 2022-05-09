@@ -59,14 +59,12 @@ const CartPage = (props) => {
     
     const updateIdea=async (id)=>{
         const url= `${process.env.REACT_APP_API_URL}ideas/${id}`;
-        //temp
-        animateIdea(id);
-        /*await axios
+        await axios
                 .put(url,{state: true})
                 .then((result)=>{
                     if(result.status===204)
                     {
-                        //animation
+                         animateIdea(id);
                     }
                     else{
                         //abort
@@ -76,7 +74,7 @@ const CartPage = (props) => {
                 .catch((err)=>{
                     console.log(err);
                     reattribute(id);
-                })*/
+                })
     }
 
     const reattribute = (id) => {
@@ -123,6 +121,7 @@ const CartPage = (props) => {
             const Repo = document.getElementById('dustRepo');
             Repo.innerHTML = ' Glisser ici une fois traité';
             container.classList.add('HiddenCard');
+            setReload(!reload);
         }
         );
     }
