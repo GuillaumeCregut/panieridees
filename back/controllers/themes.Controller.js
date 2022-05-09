@@ -66,7 +66,7 @@ const deleteOne=async (req,res)=>{
         return res.status(404).send('Id unknown');
     }
     try {
-        await themeModel.delete({_id: id}).exec();
+        await themeModel.deleteOne({_id: id}).exec();
         res.status(200).send('Theme deleted');
     }
     catch(err){

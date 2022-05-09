@@ -1,0 +1,57 @@
+.ThemeCard{
+    border: solid 1px black;
+    border-radius: 10px;
+    padding : 10px;
+    margin: 10px;
+    font-size: 1.2rem;
+    min-width: 300px;
+    min-height: 120px;
+    position: relative;
+
+    .deleteTheme{
+        position: absolute;
+        top :5px;
+        right : 15px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color : red;
+        cursor: pointer;
+    }
+
+    .InputColor{
+        margin-left: 5px;
+        margin-top: 5px;
+        width: 70px;
+        height: 30px;
+    }
+    
+    .visibleBtn{
+        display: flex;
+    }
+
+    .UnvisibleBtn{
+        display: none;
+    }
+
+    .visibleCross{
+        display: block;
+    }
+
+    .EditBtn{
+        width : 100%;
+    }
+
+    .EditBtn button{
+        font-size: inherit;
+        width: 30%;
+        display: block;
+        margin: 5px auto;
+    }
+
+    @media screen and (max-width: 1024px) {
+        min-width: 180px;
+    }
+}
+.BackgroundChange{
+    background-color: rgba(125,20,20,0.3);
+}
