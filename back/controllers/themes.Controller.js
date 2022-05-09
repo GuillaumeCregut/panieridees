@@ -62,11 +62,12 @@ const updateOne =  async(req, res) => {
 
 const deleteOne=async (req,res)=>{
     const id = req.params.id;
+    console.log(id);
     if (!ObjectID.isValid(id)) {
         return res.status(404).send('Id unknown');
     }
     try {
-        await themeModel.delete({_id: id}).exec();
+        await themeModel.deleteOne({_id: id}).exec();
         res.status(200).send('Theme deleted');
     }
     catch(err){

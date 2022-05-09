@@ -90,7 +90,7 @@ const deleteOne=async (req,res)=>{
         return res.status(404).send('Id unknown');
     }
     try {
-        await ideaModel.deleteOne({_id: id}).exec();
+        await ideaModel.findOneAndDelete({_id: id});
         res.status(200).send('Idea deleted');
     }
     catch(err){
