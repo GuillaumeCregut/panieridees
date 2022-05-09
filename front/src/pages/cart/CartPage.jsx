@@ -162,7 +162,9 @@ const CartPage = (props) => {
                     </div>
                     <div className="Dustbin">
                        <Trash 
-                       reload={reload}/>
+                       reload={reload}
+                       setReload={setReload}
+                       />
                     </div>
                 </div>
             </div>
