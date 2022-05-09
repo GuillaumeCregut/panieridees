@@ -3,12 +3,13 @@ import React,{useState} from 'react';
 import './ThemeCard.scss';
 
 const ThemeCard = ({id, color, name, reload, setReload}) => {
-
     const [newColor,setNewColor]=useState(color);
     const idCard=id+'Container';
     const idColor=id+'Color';
     const idBtn=id+'Btn';
+    const idCross=id+'Cross';
     let inEdit = false;
+
     const handleValidClick=async ()=>{
         const newName=document.getElementById(id).innerHTML;
         const updatedTheme={
@@ -27,7 +28,23 @@ const ThemeCard = ({id, color, name, reload, setReload}) => {
             .catch((err)=>{
                 console.log(err);
             })
-        
+    }
+
+    const handleDelete=async ()=>{
+        if(window.confirm('Voulez-vous supprimer ?')){
+            const url=`${process.env.REACT_APP_API_URL}themes/${id}`;
+            await axios
+                .delete(url)
+                .then((result)=>{
+                    if(result.status===204){
+                        setReload(!reload)
+                        resetCard();
+                    }
+                })
+                .catch((err)=>{
+                    console.log(err);
+                })
+        }
     }
 
     const resetCard=()=>{
@@ -40,6 +57,9 @@ const ThemeCard = ({id, color, name, reload, setReload}) => {
         btn.classList.remove('visibleBtn');
         const colorPicker=document.getElementById(idColor);
         colorPicker.disabled=true;
+        const cross=document.getElementById(idCross);
+        cross.classList.remove('visibleCross');
+        cross.classList.add('UnvisibleBtn');
         inEdit=false;
     }
 
@@ -57,6 +77,9 @@ const ThemeCard = ({id, color, name, reload, setReload}) => {
         btn.classList.add('visibleBtn');
         const colorPicker=document.getElementById(idColor);
         colorPicker.disabled=false;
+        const cross=document.getElementById(idCross);
+        cross.classList.add('visibleCross');
+        cross.classList.remove('UnvisibleBtn')
     }
     
   return (
@@ -69,9 +92,11 @@ const ThemeCard = ({id, color, name, reload, setReload}) => {
                 id={idColor}
                 value={newColor}
                 onChange={e=>setNewColor(e.target.value)}
+                className="InputColor"
                 disabled
                 />
         </label>
+        <div className="deleteTheme UnvisibleBtn" id={idCross} onClick={handleDelete}>X</div>
         </div>
         <p className="EditBtn UnvisibleBtn" id={idBtn}>
             <button onClick={handleValidClick}>Valider</button>
