@@ -3,9 +3,33 @@
     border-radius: 10px;
     padding : 10px;
     margin: 10px;
+    font-size: 1.2rem;
+    min-width: 300px;
+    min-height: 120px;
+    
+    .visibleBtn{
+        display: flex;
+    }
 
+    .UnvisibleBtn{
+        display: none;
+    }
+
+    .EditBtn{
+        width : 100%;
+    }
+
+    .EditBtn button{
+        font-size: inherit;
+        width: 30%;
+        display: block;
+        margin: 5px auto;
+    }
 
     @media screen and (max-width: 1024px) {
     
     }
+}
+.BackgroundChange{
+    background-color: rgba(125,20,20,0.3);
 }

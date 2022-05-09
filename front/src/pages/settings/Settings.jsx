@@ -63,6 +63,8 @@ const Settings = () => {
                                     id={theme._id}
                                     name={theme.name}
                                     color={theme.color}
+                                    setReload={setReload}
+                                    reload={reload}
                                 />
                             )
                         })}
