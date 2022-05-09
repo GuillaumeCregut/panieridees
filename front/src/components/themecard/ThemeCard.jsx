@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React,{useState} from 'react';
 import './ThemeCard.scss';
 
@@ -14,9 +15,19 @@ const ThemeCard = ({id, color, name, reload, setReload}) => {
             name : newName,
             color:newColor
         };
-    
-        setReload(!reload)
-        resetCard();
+        const url=`${process.env.REACT_APP_API_URL}themes/${id}`;
+        await axios
+            .put(url,updatedTheme)
+            .then((result)=>{
+                if(result.status===204){
+                    setReload(!reload)
+                    resetCard();
+                }
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
+        
     }
 
     const resetCard=()=>{
