@@ -36,8 +36,8 @@ const ThemeCard = ({id, color, name, reload, setReload}) => {
             await axios
                 .delete(url)
                 .then((result)=>{
-                    if(result.status===204){
-                        setReload(!reload)
+                    if(result.status===200){
+                        setReload(!reload);
                         resetCard();
                     }
                 })
