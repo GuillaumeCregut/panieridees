@@ -15,6 +15,8 @@ router.post('/', ideaController.addIdea);
 
 router.put('/:id', ideaController.updateOne);
 
+router.delete('/processed',ideaController.deleteProcessed);
+
 router.delete('/:id',ideaController.deleteOne);
 
 module.exports = router;
