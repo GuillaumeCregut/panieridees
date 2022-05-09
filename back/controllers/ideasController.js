@@ -62,7 +62,7 @@ const findAllDone=async(req,res)=>{
 }
 const updateOne =  async(req, res) => {
     const id = req.params.id;
-    if (!ObjectID.isValid(id) || !ObjectID.isValid(req.body.theme)) {
+    if (!ObjectID.isValid(id)) {
         return res.status(404).send('Id unknown');
     }
     try {
