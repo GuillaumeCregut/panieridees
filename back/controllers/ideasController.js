@@ -111,6 +111,17 @@ const findByTheme =async (req,res)=>{
     return res.status(200).json(docs);
 }
 
+const deleteProcessed=async (req,res)=>{
+    try {
+        const deleted=await ideaModel.deleteMany({state: true}).exec();
+        res.status(200).send({deleted});
+    }
+    catch(err){
+        console.log(err);
+        return res.status(500).send('Error removing theme');
+    }
+}
+
 module.exports={
     addIdea,
     findOne,
@@ -119,5 +130,6 @@ module.exports={
     findAllDone,
     updateOne,
     deleteOne,
-    findByTheme
+    findByTheme,
+    deleteProcessed
 }
