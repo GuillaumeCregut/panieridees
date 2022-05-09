@@ -1,0 +1,28 @@
+.IdeaCard{
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+
+    .hiddenBtn{
+        display: none;
+        width: 100%;
+    }
+    
+    .hiddenBtn button{
+        padding: 5px;
+        font-size: 1rem;
+        width: 30%;
+        margin: 5px auto;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .hiddenBtn{
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

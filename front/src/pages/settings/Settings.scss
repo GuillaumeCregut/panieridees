@@ -1,0 +1,50 @@
+.Settings{
+    width: 100%;
+    padding-left: 10px;
+
+    .PageContainer{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ThemesContainer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+
+    .NewTheme{
+        margin-top: 20px;
+    }
+
+    .NewThemeContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 390px;
+        font-size: 1.2rem;
+    }
+
+    .LabelNewTheme{
+        margin: 10px;
+    }
+
+    .LabelNewTheme input{
+        margin-left: 5px;
+        font-size: inherit;
+    }
+
+    .NewThemeButton{
+        width: 40%;
+        margin: 10px auto;
+        font-size: inherit;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .ThemesContainer{
+            flex-direction: column;
+        }
+    }
+}
