@@ -53,6 +53,13 @@ const findAllInCart=async(req,res)=>{
     return res.status(200).json(ideas);
 }
 
+const findAllDone=async(req,res)=>{
+    const ideas = await ideaModel.find({state:true}).populate('theme').select('-__v').sort({createdDate:1});
+    if(!ideas){
+        return res.status(404).send('Ideas not found');
+    }
+    return res.status(200).json(ideas);
+}
 const updateOne =  async(req, res) => {
     const id = req.params.id;
     if (!ObjectID.isValid(id) || !ObjectID.isValid(req.body.theme)) {
@@ -109,6 +116,7 @@ module.exports={
     findOne,
     findAll,
     findAllInCart,
+    findAllDone,
     updateOne,
     deleteOne,
     findByTheme

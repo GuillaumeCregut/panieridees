@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import IdeaCard from '../../components/ideacard/IdeaCard';
-import trash from '../../assets/trash.png';
+
 import bellSound from '../../assets/bell.ogg';
 import wrongSound from '../../assets/wrong.mp3';
 import './CartPage.scss';
+import Trash from '../../components/trash/Trash';
 
 const CartPage = (props) => {
     const [ideas, setIdeas] = useState([]);
@@ -160,7 +161,7 @@ const CartPage = (props) => {
                         Glisser ici une fois traité
                     </div>
                     <div className="Dustbin">
-                        <img src={trash} alt="dustbin" className='ImgDustbin'/>
+                       <Trash />
                     </div>
                 </div>
             </div>
