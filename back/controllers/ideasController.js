@@ -91,11 +91,11 @@ const deleteOne=async (req,res)=>{
     }
     try {
         await ideaModel.deleteOne({_id: id}).exec();
-        res.status(200).send('Theme deleted');
+        res.status(200).send('Idea deleted');
     }
     catch(err){
         console.log(err);
-        return res.status(500).send('Error removing theme');
+        return res.status(500).send('Error removing idea');
     }
 }
 
