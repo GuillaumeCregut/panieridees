@@ -3,7 +3,7 @@ import React,{useEffect,useState} from 'react';
 import trash from '../../assets/trash.png';
 import './Trash.scss';
 
-const Trash = () => {
+const Trash = ({reload}) => {
     const [inTrash, setInTrash]=useState([]);
 
     useEffect(()=>{
@@ -19,12 +19,21 @@ const Trash = () => {
                 })
         }
         getIdeas();
-    },[]);
+    },[reload]);
+
+    const handleEmptyTrash=async ()=>{
+        
+    }
 
   return (
     <div className='Trash'>
         <div className="NumberInTrash">{inTrash.length}</div>
-         <img src={trash} alt="dustbin" className='ImgDustbin'/>
+         <img
+            src={trash}
+            alt="dustbin"
+            className='ImgDustbin'
+            onClick={handleEmptyTrash}
+            />
     </div>
   )
 }

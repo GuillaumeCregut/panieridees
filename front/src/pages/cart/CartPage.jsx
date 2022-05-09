@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import IdeaCard from '../../components/ideacard/IdeaCard';
-
+import Trash from '../../components/trash/Trash';
 import bellSound from '../../assets/bell.ogg';
 import wrongSound from '../../assets/wrong.mp3';
 import './CartPage.scss';
-import Trash from '../../components/trash/Trash';
 
 const CartPage = (props) => {
     const [ideas, setIdeas] = useState([]);
+    const [reload,setReload] = useState(false);
     let idIdea=0;
 
     useEffect(() => {
@@ -145,6 +145,7 @@ const CartPage = (props) => {
                                 color={idea.theme.color}
                                 createdAt={idea.createdDate}
                                 drag={drag}
+                                updateIdea= {updateIdea}
                             />
                             
                         )
@@ -161,7 +162,8 @@ const CartPage = (props) => {
                         Glisser ici une fois traité
                     </div>
                     <div className="Dustbin">
-                       <Trash />
+                       <Trash 
+                       reload={reload}/>
                     </div>
                 </div>
             </div>
