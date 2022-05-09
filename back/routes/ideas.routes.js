@@ -5,6 +5,8 @@ router.get('/', ideaController.findAll);
 
 router.get('/notprocessed',ideaController.findAllInCart);
 
+router.get('/done',ideaController.findAllDone);
+
 router.get('/:id',ideaController.findOne);
 
 router.get('/bytheme/:id',ideaController.findByTheme);

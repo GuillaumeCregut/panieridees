@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import IdeaCard from '../../components/ideacard/IdeaCard';
-import trash from '../../assets/trash.png';
+import Trash from '../../components/trash/Trash';
 import bellSound from '../../assets/bell.ogg';
 import wrongSound from '../../assets/wrong.mp3';
 import './CartPage.scss';
 
 const CartPage = (props) => {
     const [ideas, setIdeas] = useState([]);
+    const [reload,setReload] = useState(false);
     let idIdea=0;
 
     useEffect(() => {
@@ -58,14 +59,12 @@ const CartPage = (props) => {
     
     const updateIdea=async (id)=>{
         const url= `${process.env.REACT_APP_API_URL}ideas/${id}`;
-        //temp
-        animateIdea(id);
-        /*await axios
+        await axios
                 .put(url,{state: true})
                 .then((result)=>{
                     if(result.status===204)
                     {
-                        //animation
+                         animateIdea(id);
                     }
                     else{
                         //abort
@@ -75,7 +74,7 @@ const CartPage = (props) => {
                 .catch((err)=>{
                     console.log(err);
                     reattribute(id);
-                })*/
+                })
     }
 
     const reattribute = (id) => {
@@ -122,6 +121,7 @@ const CartPage = (props) => {
             const Repo = document.getElementById('dustRepo');
             Repo.innerHTML = ' Glisser ici une fois traité';
             container.classList.add('HiddenCard');
+            setReload(!reload);
         }
         );
     }
@@ -144,6 +144,7 @@ const CartPage = (props) => {
                                 color={idea.theme.color}
                                 createdAt={idea.createdDate}
                                 drag={drag}
+                                updateIdea= {updateIdea}
                             />
                             
                         )
@@ -160,7 +161,8 @@ const CartPage = (props) => {
                         Glisser ici une fois traité
                     </div>
                     <div className="Dustbin">
-                        <img src={trash} alt="dustbin" className='ImgDustbin'/>
+                       <Trash 
+                       reload={reload}/>
                     </div>
                 </div>
             </div>
